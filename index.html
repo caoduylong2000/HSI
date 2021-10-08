@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <title>HSI - Hactech Student's Information</title>
+</head>
+<body>
+    <div class="container" id="container">
+        <!-- Form xác thực -->
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Xác thực OTP</h1>
+                <input type="text" placeholder="Mã xác thực" />
+                <button>Đăng nhập</button>
+            </form>
+        </div>
+        <!-- Form đăng nhập -->
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>Đăng nhập</h1>
+                <input type="email" placeholder="Mã sinh viên" />
+                <input type="password" placeholder="Mật khẩu" />
+                <a href="#">Quên mật khẩu?</a>
+                <button id="signUp">Tiếp tục</button>
+            </form>
+        </div>
+        
+        <div class="overlay-container">
+            <div class="overlay">
+                <!-- Overlay phải -->
+                <div class="overlay-panel overlay-left">
+                    <h1>Một bước nữa nhé!</h1>
+                    <p>Để truy cập, các bạn lấy mã xác thực trong mail mà các bạn đăng ký với nhà trường để tiếp tục nhé!</p>
+                </div>
+                <!-- Overlay trái -->
+                <div class="overlay-panel overlay-right">
+                    <h1>Xin chào, các bạn sinh viên</h1>
+                    <p>Các bạn hãy nhập những thông tin cần thiết để đăng nhập nhé!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/loginpage.js"></script>
+</body>
+</html>
