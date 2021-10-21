@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type=”image/x-icon” href='assets/icon/favicon.ico' rel=”shortcut icon” />
     <title>HSI - Hactech Student's Information</title>
 </head>
@@ -25,11 +24,11 @@
                 <h1>Đăng nhập</h1>
                 <input type="email" placeholder="Mã sinh viên" />
                 <input type="password" placeholder="Mật khẩu" />
-                <a href="#">Quên mật khẩu?</a>
+                <a href="#openModal">Quên mật khẩu?</a>
                 <button id="signUp">Tiếp tục</button>
             </form>
         </div>
-        
+        <!-- Overlay -->
         <div class="overlay-container">
             <div class="overlay">
                 <!-- Overlay phải -->
@@ -42,6 +41,30 @@
                     <h1>Xin chào, các bạn sinh viên</h1>
                     <p>Các bạn hãy nhập những thông tin cần thiết để đăng nhập nhé!</p>
                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Form -->
+    <div id="openModal" class="modalDialog">
+        <a href="#close" title="Close" class="close">X</a>
+        <div class="modal__container">
+            <!-- Xác thực danh tính -->
+            <div class="form-container modal__otp">
+                <form action="#">
+                    <h1>Xác thực danh tính</h1>
+                    <input type="email" placeholder="Nhập email">
+                    <input type="text" placeholder="Mã OTP">
+                    <button id="">Xác thực</button>
+                </form>
+            </div>
+            <!-- Đổi mật khẩu -->
+            <div class="form-container modal__repass">
+                <form action="#">
+                    <h1>Xác thực danh tính</h1>
+                    <input type="password" placeholder="Nhập password mới">
+                    <input type="password" placeholder="Nhập lại password mới">
+                    <button id="">Xác nhận</button>
+                </form>
             </div>
         </div>
     </div>

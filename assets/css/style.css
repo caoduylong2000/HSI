@@ -110,7 +110,10 @@ input {
 	height: 100%;
 	transition: all 0.6s ease-in-out;
 }
-
+.form-container > input:focus
+{
+	outline: none;
+}
 .sign-in-container {
 	left: 0;
 	width: 50%;
@@ -252,4 +255,136 @@ footer i {
 footer a {
     color: #3c97bf;
     text-decoration: none;
+}
+@media screen and (max-width: 768px) {
+    .container {
+        width: 480px;
+        min-height: 600px;
+    }
+    
+    .form-container {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        transition: all 0.6s ease-in-out;
+    }
+
+    .sign-in-container {
+        /* display: none; */
+        left: 0;
+        width: 100%;
+        z-index: 2;
+    }
+
+    .container.right-panel-active .sign-in-container {
+        /* display: none; */
+        transform: translateY(100%);
+        
+    }
+
+    .sign-up-container {
+        /* display: none; */
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        z-index: 1;
+    }
+
+    .container.right-panel-active .sign-up-container {
+        /* display: none; */
+        transform: translateY(0%);
+        opacity: 1;
+        z-index: 5;
+        animation: show 0.6s;
+    }
+
+    .overlay-container {
+        display: none;
+    }
+
+    .container.right-panel-active .overlay-container{
+        display: none;
+    }
+
+    .overlay {
+        display: none;
+    }
+
+    .container.right-panel-active .overlay {
+        display: none;
+    }
+
+    .overlay-panel {
+        display: none;
+    }
+
+    .overlay-left {
+        display: none;
+    }
+
+    .container.right-panel-active .overlay-left {
+        display: none;
+    }
+
+    .overlay-right {
+        display: none;
+    }
+
+    .container.right-panel-active .overlay-right {
+        display: none;
+    }
+}
+
+/* Modal */
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 10000;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+ 
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+ 
+.close {
+	color: #FFFFFF;
+	line-height: 1.5;
+	position: absolute;
+	font-size: 30px;
+	right: 0;
+	top: 0;
+	margin: 0;
+	text-align: center;
+	width: 40px;
+	text-decoration: none;
+	font-weight: bold;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+ 
+.close:hover { background: rgba(255, 255, 255, 0.3) }
+
+.modal__container {
+	display: flex;
+	position: relative;
+	max-width: 480px;
+	min-height: 480px;
+	margin: 10% auto;
+	background: #fff;
+}
+
+.modal__repass {
+	display: none;
 }
