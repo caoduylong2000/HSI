@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
     <link type=”image/x-icon” href='assets/icon/favicon.ico' rel=”shortcut icon” />
     <title>HSI - Hactech Student's Information</title>
 </head>
@@ -14,7 +15,7 @@
         <div class="form-container sign-up-container">
             <form action="#">
                 <h1>Xác thực OTP</h1>
-                <input type="text" placeholder="Mã xác thực" />
+                <input  id="otp-code" type="text" placeholder="Mã xác thực" pattern="[0-9]"/>
                 <button>Đăng nhập</button>
             </form>
         </div>
@@ -22,9 +23,9 @@
         <div class="form-container sign-in-container">
             <form action="#">
                 <h1>Đăng nhập</h1>
-                <input type="email" placeholder="Mã sinh viên" />
-                <input type="password" placeholder="Mật khẩu" />
-                <a href="#openModal">Quên mật khẩu?</a>
+                <input  id="email" type="email" placeholder="Mã sinh viên" pattern="CD[0-9]{6}"/>
+                <input  id="password" type="password" placeholder="Mật khẩu" pattern="[A-Za-z0-9]{16}" minlength="8" maxlength="16"/>
+                <span id="openModal" style="cursor: pointer; color: #333; font-size: 14px; margin: 15px 0;">Quên mật khẩu?</span>
                 <button id="signUp">Tiếp tục</button>
             </form>
         </div>
@@ -45,25 +46,28 @@
         </div>
     </div>
     <!-- Modal Form -->
-    <div id="openModal" class="modalDialog">
-        <a href="#close" title="Close" class="close">X</a>
-        <div class="modal__container">
-            <!-- Xác thực danh tính -->
-            <div class="form-container modal__otp">
+    <div class="modal" id="modal">
+        <div class="modal__container" id="modal__container">
+            <!-- Xác thực OTP -->
+            <div class="modal__otp">
                 <form action="#">
                     <h1>Xác thực danh tính</h1>
-                    <input type="email" placeholder="Nhập email">
-                    <input type="text" placeholder="Mã OTP">
-                    <button id="">Xác thực</button>
+                    <div id="send-otp">
+                        <input id="email-send" type="email" placeholder="Nhập email">
+                        <span><button id="btn-send">Gửi</button></span>
+                    </div>
+                    <input id="code" type="text" placeholder="Mã OTP" pattern="[0-9]">
+                    <button id="otp">Xác thực</button>
                 </form>
             </div>
+
             <!-- Đổi mật khẩu -->
-            <div class="form-container modal__repass">
+            <div class="modal__repass">
                 <form action="#">
-                    <h1>Xác thực danh tính</h1>
-                    <input type="password" placeholder="Nhập password mới">
-                    <input type="password" placeholder="Nhập lại password mới">
-                    <button id="">Xác nhận</button>
+                    <h1>Đổi mật khẩu</h1>
+                    <input type="password" placeholder="Nhập password mới" pattern="[A-Za-z0-9]{16}" minlength="8" maxlength="16">
+                    <input type="password" placeholder="Nhập lại password mới" pattern="[A-Za-z0-9]{16}" minlength="8" maxlength="16">
+                    <button id="repass">Xác nhận</button>
                 </form>
             </div>
         </div>
