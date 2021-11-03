@@ -21,7 +21,7 @@ body {
 
 h1 {
 	font-weight: bold;
-	margin: 0;
+	margin: 0 0 20px 0;
 }
 
 h2 {
@@ -58,10 +58,7 @@ button {
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
-}
-
-#sendotp {
-
+	margin-top: 15px;
 }
 
 button:active {
@@ -75,6 +72,12 @@ button:focus {
 button.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
+}
+
+button.disabled {
+	background-color: #ffac9e;
+	pointer-events: none;
+	border: unset;
 }
 
 form {
@@ -128,14 +131,14 @@ input {
 	transform: translateX(100%);
 }
 
-.sign-up-container {
+.log-on-container {
 	left: 0;
 	width: 50%;
 	opacity: 0;
 	z-index: 1;
 }
 
-.container.right-panel-active .sign-up-container {
+.container.right-panel-active .log-on-container {
 	transform: translateX(100%);
 	opacity: 1;
 	z-index: 5;
@@ -236,6 +239,18 @@ input {
 	width: 40px;
 }
 
+.input-group {
+	width: 100%;
+}
+.invalid {
+	outline :rgb(255, 0, 0);
+}
+.error-message {
+	color: rgb(255, 0, 0);
+    font-size: 12px;
+    font-style: italic;
+}
+
 footer {
     background-color: #222;
     color: #fff;
@@ -286,7 +301,7 @@ footer a {
         
     }
 
-    .sign-up-container {
+    .log-on-container {
         /* display: none; */
         left: 0;
         width: 100%;
@@ -294,7 +309,7 @@ footer a {
         z-index: 1;
     }
 
-    .container.right-panel-active .sign-up-container {
+    .container.right-panel-active .log-on-container {
         /* display: none; */
         transform: translateY(0%);
         opacity: 1;
@@ -369,18 +384,18 @@ footer a {
 	z-index: 2;
 	height: 80%;
 }
-#send-otp {
+#modal__email-box {
 	width: 100%;
 	display: flex;
     align-items: center;
 	box-sizing: border-box;
 }
 
-#btn-send {
+#modal__send-email {
 	border-radius: 0px;
 }
 
-#code {
+#modal__otp {
 	display: none;
 }
 
@@ -400,4 +415,7 @@ footer a {
 .modal__container.panel-active .modal__repass {
 	transform: translateY(-100%);
 	opacity: 1;
+}
+button#modal__send-email {
+	margin-top: unset;
 }

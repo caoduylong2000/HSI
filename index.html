@@ -5,28 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link type=”image/x-icon” href='assets/icon/favicon.ico' rel=”shortcut icon” />
     <title>HSI - Hactech Student's Information</title>
 </head>
 <body>
     <div class="container" id="container">
         <!-- Form xác thực -->
-        <div class="form-container sign-up-container">
-            <form action="#">
+        <div class="form-container log-on-container">
+            <form action="#" id="log-on-form">
                 <h1>Xác thực OTP</h1>
-                <input  id="otp-code" type="text" placeholder="Mã xác thực" pattern="[0-9]"/>
+                <div class="input-group">
+                    <input id="log-on-otp" type="text" name="log-on-otp" placeholder="Mã xác thực" pattern="[0-9]">
+                    <span class="error-message"></span>
+                </div>
                 <button>Đăng nhập</button>
             </form>
         </div>
         <!-- Form đăng nhập -->
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form action="#" id="sign-in-form">
                 <h1>Đăng nhập</h1>
-                <input  id="email" type="email" placeholder="Mã sinh viên" pattern="CD[0-9]{6}"/>
-                <input  id="password" type="password" placeholder="Mật khẩu" pattern="[A-Za-z0-9]{16}" minlength="8" maxlength="16"/>
-                <span id="openModal" style="cursor: pointer; color: #333; font-size: 14px; margin: 15px 0;">Quên mật khẩu?</span>
-                <button id="signUp">Tiếp tục</button>
+                <div class="input-group">
+                    <input id="sign-in-code" name="sign-in-code" type="text" placeholder="Mã sinh viên">
+                    <span class="error-message"></span>
+                </div>
+                <div class="input-group">
+                    <input id="sign-in-password" name="sign-in-password" type="password" placeholder="Mật khẩu">
+                    <span class="error-message"></span>
+                </div>
+                <span id="openModal" style="cursor: pointer; color: #333; font-size: 14px; margin-top: 15px;">Quên mật khẩu?</span>
+                <button id="signIn">Tiếp tục</button>
             </form>
         </div>
         <!-- Overlay -->
@@ -34,13 +43,13 @@
             <div class="overlay">
                 <!-- Overlay phải -->
                 <div class="overlay-panel overlay-left">
-                    <h1>Một bước nữa nhé!</h1>
-                    <p>Để truy cập, các bạn lấy mã xác thực trong mail mà các bạn đăng ký với nhà trường để tiếp tục nhé!</p>
+                    <h1>Một bước nữa !</h1>
+                    <p>Để truy cập, các bạn lấy mã xác thực trong mail mà các bạn đăng ký với nhà trường để tiếp tục !</p>
                 </div>
                 <!-- Overlay trái -->
                 <div class="overlay-panel overlay-right">
                     <h1>Xin chào, các bạn sinh viên</h1>
-                    <p>Các bạn hãy nhập những thông tin cần thiết để đăng nhập nhé!</p>
+                    <p>Các bạn hãy nhập những thông tin cần thiết để đăng nhập !</p>
                 </div>
             </div>
         </div>
@@ -50,28 +59,68 @@
         <div class="modal__container" id="modal__container">
             <!-- Xác thực OTP -->
             <div class="modal__otp">
-                <form action="#">
+                <form action="#" id="otp-check-form">
                     <h1>Xác thực danh tính</h1>
-                    <div id="send-otp">
-                        <input id="email-send" type="email" placeholder="Nhập email">
-                        <span><button id="btn-send">Gửi</button></span>
+                    <div id="modal__email-box">
+                        <div class="input-group">
+                            <input id="modal__email" name="modal__email" type="email" placeholder="Nhập email">
+                            <span class="error-message"></span>
+                        </div>
+                        <button id="modal__send-email">Gửi</button>
                     </div>
-                    <input id="code" type="text" placeholder="Mã OTP" pattern="[0-9]">
-                    <button id="otp">Xác thực</button>
+                    <div class="input-group">
+                        <input id="modal__otp" name="modal__otp" type="text" placeholder="Mã OTP" pattern="[0-9]">
+                        <span class="error-message"></span>
+                    </div>
+                    
+                    <button id="check-otp">Xác thực</button>
                 </form>
             </div>
 
             <!-- Đổi mật khẩu -->
             <div class="modal__repass">
-                <form action="#">
+                <form action="#" id="change-pass-form">
                     <h1>Đổi mật khẩu</h1>
-                    <input type="password" placeholder="Nhập password mới" pattern="[A-Za-z0-9]{16}" minlength="8" maxlength="16">
-                    <input type="password" placeholder="Nhập lại password mới" pattern="[A-Za-z0-9]{16}" minlength="8" maxlength="16">
-                    <button id="repass">Xác nhận</button>
+                    <div class="input-group">
+                        <input id="password" name="password" type="password" placeholder="Nhập password mới">
+                        <span class="error-message"></span>
+                    </div>
+                    <div class="input-group">
+                        <input id="re-password" name="re-password" type="password" placeholder="Nhập lại password mới">
+                        <span class="error-message"></span>
+                    </div>                    
+                    <button id="change-pass">Xác nhận</button>
                 </form>
             </div>
         </div>
     </div>
     <script src="assets/js/loginpage.js"></script>
+    <script src="assets/js/validator.js"></script>
+    <script>
+        Validator({
+            form: '#otp-check-form',
+            rules: [
+                Validator.isRequired('#modal__otp'),
+                Validator.isRequired('#modal__email'),
+                Validator.isEmail('#modal__email'),
+
+            ],
+
+            // form: '#change-pass-form',
+            // rules: [
+
+            // ]
+
+            // form: '#log-on-form',
+            // rules: [
+            // ],
+
+            // form: '#sign-in-form',
+            // rules: [
+
+            // ],
+        });
+        
+    </script>
 </body>
 </html>
